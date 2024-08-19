@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
+import './styles/base.css'
 import api from './api'
 
-import InactiveApi from './components/InactiveApi'
+// import InactiveApi from './components/InactiveApi'
 
 function App() {
   const [textInput, setText] = useState("")
@@ -25,19 +26,21 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='demo-container'>
         <p>API: { apiStatus === true ? "active" : "offline" }</p>
         <form onSubmit={() => handleSubmit()} className="form-container">
-          <h1>Text To Speech Demo</h1>
+          <h1 className="title">Text To Speech Demo</h1>
           <textarea
             className="form-input"
             value={textInput}
             onChange={(e) => setText(e.target.value)}
             placeholder="Input something to convert"
           ></textarea>
-          <button type="submit" className='form-button'>Convert</button>
         </form>
       </div>
+      <div onClick={handleSubmit()} className="big-btn"><button className="form-button">
+        Convert
+      </button></div>
     </>
   )
 }
